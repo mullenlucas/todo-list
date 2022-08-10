@@ -24,6 +24,13 @@ module.exports = {
       },
     ],
   },
+  devServer: {
+    open: {
+      app: {
+        name: 'chrome'
+      }
+    }
+  },
   optimization: {
     runtimeChunk: 'single',
   },
