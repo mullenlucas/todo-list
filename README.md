@@ -1,2 +1,2 @@
-# todo-list
-A "to-do" list management project 
+# webpack-template
+A webpack template to start with
