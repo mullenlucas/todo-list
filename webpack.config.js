@@ -5,6 +5,11 @@ module.exports = {
   entry: './src/index.js',
   devServer: {
     static: './dist',
+    open: {
+      app: {
+        name: 'chrome',
+      },
+    },
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -23,13 +28,6 @@ module.exports = {
         use: ['style-loader', 'css-loader'],
       },
     ],
-  },
-  devServer: {
-    open: {
-      app: {
-        name: 'chrome'
-      }
-    }
   },
   optimization: {
     runtimeChunk: 'single',
