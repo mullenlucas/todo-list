@@ -1,14 +1,54 @@
-import _ from 'lodash';
 import './style.css';
+import Tasks from './modules/Tasks.js';
+// Initiate Tasks class
+const tasksCl = new Tasks();
 
-function component() {
-  const element = document.createElement('div');
+// Load example tasks to the class
+const exampleTasks = [
+  {
+    description: 'Complete a daily challenge',
+    completed: true,
+    index: 1,
+  },
+  {
+    description: 'Update and polish projects',
+    completed: false,
+    index: 2,
+  },
+  {
+    description: 'Respond e-mails',
+    completed: true,
+    index: 3,
+  },
+];
 
-  // Lodash, now imported by this script
-  element.innerHTML = _.join(['Hello', 'webpack'], ' ');
-  element.classList.add('hello');
+exampleTasks.forEach((t) => {
+  tasksCl.newTask(t.description, t.completed, t.index);
+});
 
-  return element;
-}
+const todoUl = document.getElementById('todo-ul');
 
-document.body.appendChild(component());
+tasksCl.allTasks.forEach((task) => {
+  const liB = document.createElement('li');
+  liB.setAttribute('id', `id${task.taskIndex}`);
+  const x = document.createElement('INPUT');
+  x.setAttribute('type', 'checkbox');
+  liB.appendChild(x);
+  const p = document.createElement('p');
+  p.setAttribute('id', `p${task.taskIndex}`);
+  p.innerHTML = task.taskDesc;
+  liB.appendChild(p);
+
+  const i = document.createElement('i');
+  i.setAttribute('class', 'fa-solid fa-ellipsis-vertical');
+  liB.appendChild(i);
+
+  todoUl.appendChild(liB);
+});
+
+const liClear = document.createElement('li');
+liClear.setAttribute('id', 'clearList');
+const pClear = document.createElement('p');
+pClear.innerHTML = 'Clear all completed';
+liClear.appendChild(pClear);
+todoUl.appendChild(liClear);
