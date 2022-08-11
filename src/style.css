@@ -1,9 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+
+:root {
+  --font-lato: 'Lato', sans-serif;
+}
+
 body {
-  background-color: bisque;
+  background-color: rgb(242, 242, 242);
 }
 
 .todo-sec {
   display:flex;
+  justify-content: center;
 }
 
 .todo-sec ul {
@@ -12,8 +19,42 @@ body {
   padding: 0;
   display: flex;
   flex-direction: column;
+  box-shadow: 0px 0px 4px 2px rgba(0, 0, 255, .2);
+  gap: 2px;
+  width: 60%;
 }
 
 .todo-sec ul li {
   line-height: 24px;
+  display: flex;
+  /* justify-content: space-between; */
+  align-items: center;
+  font-family: var(--font-lato);
+  /* gap: 42px; */
+  background-color: #fff;
+  padding: 0 4%;
+}
+
+.todo-sec ul li p {
+  float: left;
+  padding-left: 2%;
+}
+
+.todo-sec ul li i {
+  margin-left: auto;
+}
+
+.todoTitle {
+  font-weight: bold;
+}
+
+.todoAdd {
+  font-style: italic;
+}
+
+#clearList {
+  margin: auto;
+  background-color: rgb(242, 242, 242);
+  color: rgb(77, 77, 77);
+  width: 40%;
 }
