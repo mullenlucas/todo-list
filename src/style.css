@@ -55,7 +55,7 @@ body {
   color: rgb(77, 77, 77);
 }
 
-.addto {
+.addto, .editing-task {
   outline: none;
   -webkit-appearance: none;
   padding: 0;
@@ -65,4 +65,30 @@ body {
   margin: 16px 0;
   font-style: italic;
   width: 80%;
+}
+
+#menu-task {
+  display: none;
+  position: absolute;
+}
+
+#menu-task ul {
+  display: flex;
+  flex-direction: column;
+  list-style-type: none;
+  margin: 0;
+  padding: 0.6%;
+  box-shadow: 0 0 4px 2px rgba(0, 0, 255, 0.2);
+  background-color: #fff;
+  gap: 4px;
+  line-height: 24px;
+  font-family: var(--font-lato);
+}
+
+#menu-task ul li {
+  align-items: center;
+}
+
+#menu-task ul li:hover{
+  background-color: rgb(242, 242, 242);
 }
