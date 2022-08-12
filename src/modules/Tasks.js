@@ -27,7 +27,7 @@ class Tasks {
 
   changeIndex() {
     this.allTasks.forEach((task, i) => {
-      task.index = i;
+      task.index = i + 1;
     });
   }
 

@@ -8,7 +8,7 @@ const editHtml = (idnum, tC) => {
   const textEditField = document.createElement('input');
   textEditField.setAttribute('type', 'text');
   textEditField.setAttribute('class', 'editing-task');
-  textEditField.placeholder = opTask;
+  textEditField.value = opTask;
   const liNew = document.getElementById(`id${idnum}`);
 
   liNew.insertBefore(textEditField, iconId);
