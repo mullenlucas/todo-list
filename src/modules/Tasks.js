@@ -21,19 +21,18 @@ class Tasks {
     return this.tasks.index;
   }
 
-  removeTask(ind){
-    this.tasks.splice(ind, 1)
+  removeTask(ind) {
+    this.tasks.splice(ind, 1);
   }
 
-  changeIndex(){
-      this.allTasks.forEach((task, i) => {
-      task.index = i
-      console.log(task);
-    })
+  changeIndex() {
+    this.allTasks.forEach((task, i) => {
+      task.index = i;
+    });
   }
 
-  changeDesc(ind, desq){
-    this.allTasks[ind].desc = desq
+  changeDesc(ind, desq) {
+    this.allTasks[ind].desc = desq;
   }
 }
 

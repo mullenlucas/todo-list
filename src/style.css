@@ -55,14 +55,14 @@ body {
   color: rgb(77, 77, 77);
 }
 
-.addto, .editing-task {
+.addto,
+.editing-task {
   outline: none;
   -webkit-appearance: none;
   padding: 0;
-  margin: 0;
+  margin: 16px 0;
   border: none;
   padding-left: 2%;
-  margin: 16px 0;
   font-style: italic;
   width: 80%;
 }
@@ -89,6 +89,6 @@ body {
   align-items: center;
 }
 
-#menu-task ul li:hover{
+#menu-task ul li:hover {
   background-color: rgb(242, 242, 242);
 }

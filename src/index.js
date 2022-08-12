@@ -1,4 +1,3 @@
-/* eslint-disable */
 import './style.css';
 import Tasks from './modules/Tasks.js';
 
@@ -7,10 +6,8 @@ const tasksCl = new Tasks();
 
 const todoUl = document.getElementById('todo-ul');
 
-
-// tasksCl.allTasks.forEach((task) => {
-//   const liB = document.createElement('li');
-//   liB.setAttribute('id', `id${task.taskIndex}`);
+let currentIndex = 0;
+let numt = 0;
 
 const liClear = document.createElement('li');
 liClear.setAttribute('id', 'clearList');
@@ -20,12 +17,41 @@ liClear.appendChild(pClear);
 todoUl.appendChild(liClear);
 const clearTodo = document.getElementById('clearList');
 
-
 const addTask = document.getElementById('add-task');
 const addIcon = document.getElementById('add-icon');
-let taskMenuIcon = document.querySelectorAll('.menu-display')
+let taskMenuIcon = document.querySelectorAll('.menu-display');
+const menuExp = document.getElementById('menu-task');
+const editTask = document.getElementById('edit-task');
+const removeTask = document.getElementById('remove-task');
+// Initiate web
 
-let currentIndex = 0
+// Load elements
+if (localStorage.length !== 0) {
+  const storedVals = JSON.parse(localStorage.todoItems);
+
+  storedVals.forEach((sV) => {
+    tasksCl.newTask(sV.desc, sV.bval, sV.index);
+
+    const liB = document.createElement('li');
+    liB.setAttribute('id', `id${sV.index}`);
+    const x = document.createElement('INPUT');
+    x.setAttribute('type', 'checkbox');
+    liB.appendChild(x);
+    const p = document.createElement('p');
+    p.setAttribute('id', `p${sV.index}`);
+    p.innerHTML = sV.desc;
+    liB.appendChild(p);
+
+    const i = document.createElement('i');
+    i.setAttribute('class', 'menu-display fa-solid fa-ellipsis-vertical');
+    i.setAttribute('id', `${sV.index}`);
+    liB.appendChild(i);
+
+    todoUl.insertBefore(liB, clearTodo);
+  });
+  currentIndex = tasksCl.allTasks.length;
+}
+
 addIcon.addEventListener('click', () => {
   tasksCl.newTask(addTask.value, false, currentIndex);
 
@@ -41,72 +67,67 @@ addIcon.addEventListener('click', () => {
 
   const i = document.createElement('i');
   i.setAttribute('class', 'menu-display fa-solid fa-ellipsis-vertical');
-  i.setAttribute('id', `${tasksCl.allTasks[currentIndex].index}`)
+  i.setAttribute('id', `${tasksCl.allTasks[currentIndex].index}`);
   liB.appendChild(i);
 
   todoUl.insertBefore(liB, clearTodo);
 
-  currentIndex++;
-  taskMenuIcon = document.querySelectorAll('.menu-display')
-  console.log(tasksCl);
+  currentIndex += 1;
+  taskMenuIcon = document.querySelectorAll('.menu-display');
+
+  localStorage.setItem('todoItems', JSON.stringify(tasksCl.allTasks));
 
   taskMenuIcon.forEach((a) => {
     a.addEventListener('click', (c) => {
-      console.log('holiswe');
-      menuExp.style.display = 'flex'
-      let x = c.clientX
-      let y = c.clientY
-      
+      menuExp.style.display = 'flex';
+      const x = c.clientX;
+      const y = c.clientY;
+
       menuExp.style.top = `${y}px`;
       menuExp.style.left = `${x}px`;
-      globalThis.numt = c.target.id
-    })
-  })
+      numt = c.target.id;
+    });
+  });
+});
 
-})
+removeTask.addEventListener('click', () => {
+  const remothis = document.getElementById(`id${numt}`);
 
-const menuExp = document.getElementById('menu-task')
-const editTask = document.getElementById('edit-task')
-const removeTask = document.getElementById('remove-task')
+  tasksCl.removeTask(numt);
 
-removeTask.addEventListener('click', (rT) => {
-  const remothis = document.getElementById(`id${numt}`)
-  
-  tasksCl.removeTask(numt)
-  
-  remothis?.remove()
+  remothis?.remove();
 
-  tasksCl.changeIndex()
-  console.log(tasksCl);
-  currentIndex--
-  menuExp.style.display = 'none'
-})
+  tasksCl.changeIndex();
+  currentIndex -= 1;
+  localStorage.setItem('todoItems', JSON.stringify(tasksCl.allTasks));
+  menuExp.style.display = 'none';
+});
 
-editTask.addEventListener('click', (eT) => {
-  const remop = document.getElementById(`p${numt}`)
-  const opTask = remop.innerHTML
-  const iconId = document.getElementById(`${numt}`)
+editTask.addEventListener('click', () => {
+  const remop = document.getElementById(`p${numt}`);
+  const opTask = remop.innerHTML;
+  const iconId = document.getElementById(`${numt}`);
 
-  remop?.remove()
+  remop?.remove();
 
-  const textEditField = document.createElement('input')
-  textEditField.setAttribute('type', 'text')
-  textEditField.setAttribute('class', 'editing-task')
-  textEditField.placeholder = opTask
-  const liNew = document.getElementById(`id${numt}`)
+  const textEditField = document.createElement('input');
+  textEditField.setAttribute('type', 'text');
+  textEditField.setAttribute('class', 'editing-task');
+  textEditField.placeholder = opTask;
+  const liNew = document.getElementById(`id${numt}`);
 
-  liNew.insertBefore(textEditField, iconId)
-  textEditField.focus()
+  liNew.insertBefore(textEditField, iconId);
+  textEditField.focus();
 
   textEditField.addEventListener('change', () => {
-    const newDesc = document.createElement('p')
+    const newDesc = document.createElement('p');
     newDesc.setAttribute('id', `p${numt}`);
     newDesc.innerHTML = textEditField.value;
-    textEditField.remove()
-    liNew.insertBefore(newDesc, iconId)
+    textEditField.remove();
+    liNew.insertBefore(newDesc, iconId);
 
-    tasksCl.changeDesc(numt, newDesc.innerHTML)
-    console.log(tasksCl)
+    tasksCl.changeDesc(numt, newDesc.innerHTML);
+    localStorage.setItem('todoItems', JSON.stringify(tasksCl.allTasks));
   });
   menuExp.style.display = 'none';
-})
+});
