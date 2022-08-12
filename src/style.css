@@ -53,7 +53,6 @@ body {
   padding: 0;
   background-color: rgb(242, 242, 242);
   color: rgb(77, 77, 77);
-  /* min-width: 40%; */
 }
 
 .addto {
@@ -65,4 +64,5 @@ body {
   padding-left: 2%;
   margin: 16px 0;
   font-style: italic;
+  width: 80%;
 }
