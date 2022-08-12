@@ -60,6 +60,7 @@ addIcon.addEventListener('click', () => {
 
   currentIndex += 1;
   localStorage.setItem('todoItems', JSON.stringify(tasksCl.allTasks));
+  addTask.value = '';
 
   taskMenuIcon = document.querySelectorAll('.menu-display');
   taskMenuIcon.forEach((a) => {

@@ -8,6 +8,7 @@ const addHtml = (newD, currI, d, b, ix, tC) => {
   liB.appendChild(x);
   const p = document.createElement('p');
   p.setAttribute('id', `p${ix}`);
+  p.setAttribute('class', 'p-task');
   p.innerHTML = d;
   liB.appendChild(p);
 
