@@ -26,6 +26,7 @@ let taskMenuIcon = document.querySelectorAll('.menu-display');
 const menuExp = document.getElementById('menu-task');
 const editTask = document.getElementById('edit-task');
 const removeTask = document.getElementById('remove-task');
+let inChk = document.querySelectorAll('.checkbox-item')
 // Initiate web
 
 // Load elements
@@ -33,7 +34,7 @@ if (localStorage.length !== 0) {
   const storedVals = JSON.parse(localStorage.todoItems);
 
   storedVals.forEach((sV) => {
-    todoUl.insertBefore(addHtml(sV.desc, currentIndex,
+    todoUl.insertBefore(addHtml(sV.desc, sV.index - 1,
       sV.desc, sV.bval, sV.index, tasksCl), clearTodo);
   });
   currentIndex = tasksCl.allTasks.length;
@@ -50,6 +51,19 @@ if (localStorage.length !== 0) {
       numt = c.target.id;
     });
   });
+
+  inChk = document.querySelectorAll('.checkbox-item')
+  inChk.forEach((ch) => {
+    ch.addEventListener('change', (evi) => {
+      const matchId = evi.target.id.match(/(\d+)/);
+      tasksCl.allTasks[matchId[0]-1].bval = !tasksCl.allTasks[matchId[0]-1].bval;
+
+      localStorage.setItem('todoItems', JSON.stringify(tasksCl.allTasks));
+    })
+  })
+  let completedTasks = tasksCl.allTasks.filter((tsk) => tsk.bval)
+  console.log(completedTasks);
+
 }
 
 addIcon.addEventListener('click', () => {
@@ -73,15 +87,14 @@ addIcon.addEventListener('click', () => {
         menuExp.style.top = `${y}px`;
         menuExp.style.left = `${x}px`;
         numt = c.target.id;
-
-        // document.addEventListener('click', (evv) => {
-        //   const isClickInside = menuExp.contains(evv.target)
-        //   if (!isClickInside) {
-        //     menuExp.style.display = 'none';
-        //   }
-        // })
       });
     });
+    inChk = document.querySelectorAll('.checkbox-item')
+    inChk.forEach((ch) => {
+      ch.addEventListener('change', (evi) => {
+        
+      })
+    })
   }
 });
 
@@ -98,3 +111,12 @@ editTask.addEventListener('click', () => {
 
   menuExp.style.display = 'none';
 });
+
+clearTodo.addEventListener('click', (cl) => {
+  const newTs = tasksCl.allTasks.filter( (mov) => {
+    return mov.index == 1
+  })
+  console.log(newTs);
+  
+  
+})

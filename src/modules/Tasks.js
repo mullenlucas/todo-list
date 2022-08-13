@@ -34,6 +34,10 @@ class Tasks {
   changeDesc(ind, desq) {
     this.allTasks[ind].desc = desq;
   }
+
+  changeBool(i, b) {
+    this.allTasks[i].bval = b;
+  }
 }
 
 export default Tasks;

@@ -7,6 +7,8 @@ const addHtml = (newD, currI, d, b, ix, tC) => {
   leftDiv.setAttribute('class', 'left-li');
   const x = document.createElement('INPUT');
   x.setAttribute('type', 'checkbox');
+  x.setAttribute('id', `chid${ix}`)
+  x.setAttribute('class', 'checkbox-item')
   leftDiv.appendChild(x);
   const p = document.createElement('p');
   p.setAttribute('id', `p${ix}`);
