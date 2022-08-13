@@ -25,25 +25,29 @@ body {
 }
 
 .todo-sec ul li {
-  line-height: 24px;
   display: flex;
-
-  /* justify-content: space-between; */
   align-items: center;
   font-family: var(--font-lato);
-
-  /* gap: 42px; */
   background-color: #fff;
   padding: 0 4%;
 }
 
 .todo-sec ul li p {
-  float: left;
   padding-left: 2%;
 }
 
 .todo-sec ul li i {
   margin-left: auto;
+  min-width: 24px;
+  text-align: center;
+}
+
+.left-li {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: flex-start;
+  flex: 1;
 }
 
 .todoTitle {
@@ -55,8 +59,46 @@ body {
 }
 
 #clearList {
-  margin: auto;
+  justify-content: center;
+  padding: 0;
   background-color: rgb(242, 242, 242);
   color: rgb(77, 77, 77);
-  width: 40%;
+}
+
+.addto,
+.editing-task {
+  outline: none;
+  -webkit-appearance: none;
+  padding: 0;
+  margin: 16px 0;
+  border: none;
+  padding-left: 2%;
+  font-style: italic;
+  width: 80%;
+}
+
+#menu-task {
+  display: none;
+  position: absolute;
+}
+
+#menu-task ul {
+  display: flex;
+  flex-direction: column;
+  list-style-type: none;
+  margin: 0;
+  padding: 0.6%;
+  box-shadow: 0 0 4px 2px rgba(0, 0, 255, 0.2);
+  background-color: #fff;
+  gap: 4px;
+  line-height: 24px;
+  font-family: var(--font-lato);
+}
+
+#menu-task ul li {
+  align-items: center;
+}
+
+#menu-task ul li:hover {
+  background-color: rgb(242, 242, 242);
 }

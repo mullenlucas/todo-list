@@ -16,6 +16,24 @@ class Tasks {
   get allTasks() {
     return this.tasks;
   }
+
+  get allIndexes() {
+    return this.tasks.index;
+  }
+
+  removeTask(ind) {
+    this.tasks.splice(ind, 1);
+  }
+
+  changeIndex() {
+    this.allTasks.forEach((task, i) => {
+      task.index = i + 1;
+    });
+  }
+
+  changeDesc(ind, desq) {
+    this.allTasks[ind].desc = desq;
+  }
 }
 
 export default Tasks;

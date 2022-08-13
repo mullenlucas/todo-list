@@ -23,18 +23,13 @@ Coming soon.
 
 **This project is for an exercise for the microverse program. Features may be added across exercise completions**
 
-## To run this repository, these commands should be run on the directory's terminal:
+## To run this repository locally, these commands should be run on the directory's terminal:
 
 ```
-npm install webpack webpack-cli --save-dev
-npm install --save lodash
-npx webpack --config webpack.config.js
-npm install --save-dev html-webpack-plugin
-npm install --save-dev style-loader css-loader
-npm install --save-dev webpack-dev-server
+npm install
 
 ```
-All the necessary packages will be installed with the commands above
+All the necessary packages will be installed with the command above
 
 ## Author
 
@@ -62,4 +57,4 @@ Give a ⭐️ if you like this project!
 
 ## 📝 License
 
-This project is not yet licensed.
+This project is MIT licensed
