@@ -38,6 +38,16 @@ body {
 
 .todo-sec ul li i {
   margin-left: auto;
+  min-width: 24px;
+  text-align: center;
+}
+
+.left-li {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: flex-start;
+  flex: 1;
 }
 
 .todoTitle {

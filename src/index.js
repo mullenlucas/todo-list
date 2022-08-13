@@ -53,27 +53,36 @@ if (localStorage.length !== 0) {
 }
 
 addIcon.addEventListener('click', () => {
-  todoUl.insertBefore(addHtml(
-    addTask.value, currentIndex,
-    addTask.value, false, currentIndex, tasksCl,
-  ), clearTodo);
+  if (addTask.value !== '') {
+    todoUl.insertBefore(addHtml(
+      addTask.value, currentIndex,
+      addTask.value, false, currentIndex, tasksCl,
+    ), clearTodo);
 
-  currentIndex += 1;
-  localStorage.setItem('todoItems', JSON.stringify(tasksCl.allTasks));
-  addTask.value = '';
+    currentIndex += 1;
+    localStorage.setItem('todoItems', JSON.stringify(tasksCl.allTasks));
+    addTask.value = '';
 
-  taskMenuIcon = document.querySelectorAll('.menu-display');
-  taskMenuIcon.forEach((a) => {
-    a.addEventListener('click', (c) => {
-      menuExp.style.display = 'flex';
-      const x = c.clientX;
-      const y = c.clientY;
+    taskMenuIcon = document.querySelectorAll('.menu-display');
+    taskMenuIcon.forEach((a) => {
+      a.addEventListener('click', (c) => {
+        menuExp.style.display = 'flex';
+        const x = c.clientX;
+        const y = c.clientY;
 
-      menuExp.style.top = `${y}px`;
-      menuExp.style.left = `${x}px`;
-      numt = c.target.id;
+        menuExp.style.top = `${y}px`;
+        menuExp.style.left = `${x}px`;
+        numt = c.target.id;
+
+        // document.addEventListener('click', (evv) => {
+        //   const isClickInside = menuExp.contains(evv.target)
+        //   if (!isClickInside) {
+        //     menuExp.style.display = 'none';
+        //   }
+        // })
+      });
     });
-  });
+  }
 });
 
 removeTask.addEventListener('click', () => {

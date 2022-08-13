@@ -3,14 +3,17 @@ const addHtml = (newD, currI, d, b, ix, tC) => {
 
   const liB = document.createElement('li');
   liB.setAttribute('id', `id${ix}`);
+  const leftDiv = document.createElement('div');
+  leftDiv.setAttribute('class', 'left-li');
   const x = document.createElement('INPUT');
   x.setAttribute('type', 'checkbox');
-  liB.appendChild(x);
+  leftDiv.appendChild(x);
   const p = document.createElement('p');
   p.setAttribute('id', `p${ix}`);
   p.setAttribute('class', 'p-task');
   p.innerHTML = d;
-  liB.appendChild(p);
+  leftDiv.appendChild(p);
+  liB.appendChild(leftDiv);
 
   const i = document.createElement('i');
   i.setAttribute('class', 'menu-display fa-solid fa-ellipsis-vertical');
