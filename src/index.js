@@ -3,6 +3,8 @@ import Tasks from './modules/Tasks.js';
 import addHtml from './modules/AddHtml.js';
 import remoHtml from './modules/RemoHtml.js';
 import editHtml from './modules/EditHtml.js';
+import chkUpd from './modules/checksUpdate.js';
+import completedFunc from './modules/completedTasks.js';
 
 // Initiate Tasks class
 const tasksCl = new Tasks();
@@ -40,6 +42,7 @@ if (localStorage.length !== 0) {
   currentIndex = tasksCl.allTasks.length;
 
   taskMenuIcon = document.querySelectorAll('.menu-display');
+
   taskMenuIcon.forEach((a) => {
     a.addEventListener('click', (c) => {
       menuExp.style.display = 'flex';
@@ -53,14 +56,7 @@ if (localStorage.length !== 0) {
   });
 
   inChk = document.querySelectorAll('.checkbox-item');
-  inChk.forEach((ch) => {
-    ch.addEventListener('change', (evi) => {
-      const matchId = evi.target.id.match(/(\d+)/);
-      tasksCl.allTasks[matchId[0] - 1].bval = !tasksCl.allTasks[matchId[0] - 1].bval;
-
-      localStorage.setItem('todoItems', JSON.stringify(tasksCl.allTasks));
-    });
-  });
+  chkUpd(inChk, tasksCl.allTasks);
 }
 
 addIcon.addEventListener('click', () => {
@@ -87,14 +83,7 @@ addIcon.addEventListener('click', () => {
       });
     });
     inChk = document.querySelectorAll('.checkbox-item');
-    inChk.forEach((ch) => {
-      ch.addEventListener('change', (evi) => {
-        const matchId = evi.target.id.match(/(\d+)/);
-        tasksCl.allTasks[matchId[0] - 1].bval = !tasksCl.allTasks[matchId[0] - 1].bval;
-
-        localStorage.setItem('todoItems', JSON.stringify(tasksCl.allTasks));
-      });
-    });
+    chkUpd(inChk, tasksCl.allTasks);
   }
 });
 
@@ -113,13 +102,7 @@ editTask.addEventListener('click', () => {
 });
 
 clearTodo.addEventListener('click', () => {
-  const completedTasks = tasksCl.allTasks.filter((tsk) => tsk.bval);
-  completedTasks.forEach((chk) => {
-    const itemsToRemo = document.getElementById(`id${chk.index}`);
-    itemsToRemo.remove();
-  });
-  tasksCl.removeCompleted(completedTasks);
-  tasksCl.changeIndex();
+  completedFunc(tasksCl);
 
   localStorage.setItem('todoItems', JSON.stringify(tasksCl.allTasks));
 });
