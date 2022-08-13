@@ -21,7 +21,7 @@ const editHtml = (idnum, tC) => {
     textEditField.remove();
     leftNew.appendChild(newDesc);
 
-    tC.changeDesc(idnum - 1, newDesc.innerHTML);
+    tC.changeDesc(idnum, newDesc.innerHTML);
     localStorage.setItem('todoItems', JSON.stringify(tC.allTasks));
   });
 };

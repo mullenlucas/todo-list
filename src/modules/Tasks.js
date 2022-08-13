@@ -22,7 +22,7 @@ class Tasks {
   }
 
   removeTask(ind) {
-    this.tasks.splice(ind, 1);
+    this.tasks.splice(ind - 1, 1);
   }
 
   changeIndex() {
@@ -32,7 +32,7 @@ class Tasks {
   }
 
   changeDesc(ind, desq) {
-    this.allTasks[ind].desc = desq;
+    this.allTasks[ind - 1].desc = desq;
   }
 
   changeBool(i, b) {

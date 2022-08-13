@@ -1,5 +1,5 @@
 const addHtml = (newD, currI, d, b, ix, tC) => {
-  tC.newTask(newD, b, currI + 1);
+  tC.newTask(newD, b, currI);
 
   const liB = document.createElement('li');
   liB.setAttribute('id', `id${ix}`);
@@ -25,6 +25,7 @@ const addHtml = (newD, currI, d, b, ix, tC) => {
   i.setAttribute('id', `${ix}`);
   liB.appendChild(i);
 
+  tC.changeIndex();
   return liB;
 };
 
