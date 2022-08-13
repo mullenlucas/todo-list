@@ -26,7 +26,7 @@ let taskMenuIcon = document.querySelectorAll('.menu-display');
 const menuExp = document.getElementById('menu-task');
 const editTask = document.getElementById('edit-task');
 const removeTask = document.getElementById('remove-task');
-let inChk = document.querySelectorAll('.checkbox-item')
+let inChk = document.querySelectorAll('.checkbox-item');
 // Initiate web
 
 // Load elements
@@ -52,18 +52,17 @@ if (localStorage.length !== 0) {
     });
   });
 
-  inChk = document.querySelectorAll('.checkbox-item')
+  inChk = document.querySelectorAll('.checkbox-item');
   inChk.forEach((ch) => {
     ch.addEventListener('change', (evi) => {
       const matchId = evi.target.id.match(/(\d+)/);
-      tasksCl.allTasks[matchId[0]-1].bval = !tasksCl.allTasks[matchId[0]-1].bval;
+      tasksCl.allTasks[matchId[0] - 1].bval = !tasksCl.allTasks[matchId[0] - 1].bval;
 
       localStorage.setItem('todoItems', JSON.stringify(tasksCl.allTasks));
-    })
-  })
-  let completedTasks = tasksCl.allTasks.filter((tsk) => tsk.bval)
+    });
+  });
+  const completedTasks = tasksCl.allTasks.filter((tsk) => tsk.bval);
   console.log(completedTasks);
-
 }
 
 addIcon.addEventListener('click', () => {
@@ -89,12 +88,17 @@ addIcon.addEventListener('click', () => {
         numt = c.target.id;
       });
     });
-    inChk = document.querySelectorAll('.checkbox-item')
+    inChk = document.querySelectorAll('.checkbox-item');
     inChk.forEach((ch) => {
       ch.addEventListener('change', (evi) => {
-        
-      })
-    })
+        const matchId = evi.target.id.match(/(\d+)/);
+        tasksCl.allTasks[matchId[0] - 1].bval = !tasksCl.allTasks[matchId[0] - 1].bval;
+
+        localStorage.setItem('todoItems', JSON.stringify(tasksCl.allTasks));
+      });
+    });
+    const completedTasks = tasksCl.allTasks.filter((tsk) => tsk.bval);
+    console.log(completedTasks);
   }
 });
 
@@ -112,11 +116,10 @@ editTask.addEventListener('click', () => {
   menuExp.style.display = 'none';
 });
 
-clearTodo.addEventListener('click', (cl) => {
-  const newTs = tasksCl.allTasks.filter( (mov) => {
-    return mov.index == 1
-  })
-  console.log(newTs);
-  
-  
-})
+// clearTodo.addEventListener('click', (cl) => {
+//   const newTs = tasksCl.allTasks.filter( (mov) => {
+//     return mov.index == 1
+//   })
+//   console.log(newTs);
+
+// })

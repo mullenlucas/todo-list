@@ -5,10 +5,11 @@ const addHtml = (newD, currI, d, b, ix, tC) => {
   liB.setAttribute('id', `id${ix}`);
   const leftDiv = document.createElement('div');
   leftDiv.setAttribute('class', 'left-li');
+  leftDiv.setAttribute('id', `ld${ix}`);
   const x = document.createElement('INPUT');
   x.setAttribute('type', 'checkbox');
-  x.setAttribute('id', `chid${ix}`)
-  x.setAttribute('class', 'checkbox-item')
+  x.setAttribute('id', `chid${ix}`);
+  x.setAttribute('class', 'checkbox-item');
   leftDiv.appendChild(x);
   const p = document.createElement('p');
   p.setAttribute('id', `p${ix}`);
