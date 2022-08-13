@@ -33,11 +33,14 @@ class Tasks {
 
   changeDesc(ind, desq) {
     this.allTasks[ind].desc = desq;
-    
   }
 
   changeBool(i, b) {
     this.allTasks[i].bval = b;
+  }
+
+  removeCompleted(completed) {
+    this.tasks = this.tasks.filter((element) => !completed.includes(element));
   }
 }
 

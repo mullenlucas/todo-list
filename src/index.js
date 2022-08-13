@@ -27,8 +27,8 @@ const menuExp = document.getElementById('menu-task');
 const editTask = document.getElementById('edit-task');
 const removeTask = document.getElementById('remove-task');
 let inChk = document.querySelectorAll('.checkbox-item');
-// Initiate web
 
+// Initiate web
 // Load elements
 if (localStorage.length !== 0) {
   const storedVals = JSON.parse(localStorage.todoItems);
@@ -61,8 +61,6 @@ if (localStorage.length !== 0) {
       localStorage.setItem('todoItems', JSON.stringify(tasksCl.allTasks));
     });
   });
-  const completedTasks = tasksCl.allTasks.filter((tsk) => tsk.bval);
-  console.log(completedTasks);
 }
 
 addIcon.addEventListener('click', () => {
@@ -97,8 +95,6 @@ addIcon.addEventListener('click', () => {
         localStorage.setItem('todoItems', JSON.stringify(tasksCl.allTasks));
       });
     });
-    const completedTasks = tasksCl.allTasks.filter((tsk) => tsk.bval);
-    console.log(completedTasks);
   }
 });
 
@@ -116,10 +112,14 @@ editTask.addEventListener('click', () => {
   menuExp.style.display = 'none';
 });
 
-// clearTodo.addEventListener('click', (cl) => {
-//   const newTs = tasksCl.allTasks.filter( (mov) => {
-//     return mov.index == 1
-//   })
-//   console.log(newTs);
+clearTodo.addEventListener('click', () => {
+  const completedTasks = tasksCl.allTasks.filter((tsk) => tsk.bval);
+  completedTasks.forEach((chk) => {
+    const itemsToRemo = document.getElementById(`id${chk.index}`);
+    itemsToRemo.remove();
+  });
+  tasksCl.removeCompleted(completedTasks);
+  tasksCl.changeIndex();
 
-// })
+  localStorage.setItem('todoItems', JSON.stringify(tasksCl.allTasks));
+});

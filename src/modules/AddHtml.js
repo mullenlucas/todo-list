@@ -3,6 +3,7 @@ const addHtml = (newD, currI, d, b, ix, tC) => {
 
   const liB = document.createElement('li');
   liB.setAttribute('id', `id${ix}`);
+  liB.setAttribute('class', 'todo-item');
   const leftDiv = document.createElement('div');
   leftDiv.setAttribute('class', 'left-li');
   leftDiv.setAttribute('id', `ld${ix}`);
@@ -10,6 +11,7 @@ const addHtml = (newD, currI, d, b, ix, tC) => {
   x.setAttribute('type', 'checkbox');
   x.setAttribute('id', `chid${ix}`);
   x.setAttribute('class', 'checkbox-item');
+  if (b) { x.checked = true; }
   leftDiv.appendChild(x);
   const p = document.createElement('p');
   p.setAttribute('id', `p${ix}`);
