@@ -15,7 +15,7 @@
 
 ## Website
 
-Coming soon.
+[Click here to access the website](https://mullenlucas.github.io/todo-list/dist/)
 
 ## Information
 
