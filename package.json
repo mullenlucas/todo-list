@@ -4,7 +4,7 @@
   "description": "A webpack template to start with",
   "private": true,
   "scripts": {
-    "test": "jest --coverage",
+    "test": "jest",
     "start": "webpack serve --mode development --open-app-name 'chrome'",
     "build": "webpack"
   },
