@@ -4,7 +4,7 @@
   "description": "A webpack template to start with",
   "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "start": "webpack serve --mode development --open-app-name 'chrome'",
     "build": "webpack"
   },
@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/mullenlucas/webpack-template#readme",
   "devDependencies": {
+    "@babel/plugin-transform-modules-commonjs": "^7.18.6",
     "babel-eslint": "^10.1.0",
     "css-loader": "^6.7.1",
     "eslint": "^7.32.0",
@@ -27,6 +28,8 @@
     "eslint-plugin-import": "^2.26.0",
     "hint": "^7.1.1",
     "html-webpack-plugin": "^5.5.0",
+    "jest": "^28.1.3",
+    "jest-environment-jsdom": "^28.1.3",
     "style-loader": "^3.3.1",
     "stylelint": "^13.13.1",
     "stylelint-config-standard": "^21.0.0",
