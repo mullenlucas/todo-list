@@ -1,8 +1,8 @@
 /** * @jest-environment jsdom */
 
-import addHtml from './AddHtml.js';
-import Tasks from './Tasks.js';
-import remoHtml from './RemoHtml.js';
+import addHtml from '../AddHtml.js';
+import Tasks from '../Tasks.js';
+import remoHtml from '../RemoHtml.js';
 
 describe('Add and Remove Task', () => {
   test('Add a new task', () => {
